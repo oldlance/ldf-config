@@ -1,0 +1,7 @@
+colorscheme jellybeans
+
+" Allow the gq command to format a scala file
+au BufEnter *.scala setl formatprg=scala\ -cp\ /Users/lance/Development/Tools/scalariform.jar\ scalariform.commandline.Main\ --forceOutput
+
+" Use Node.js for JavaScript interpretation
+let $JS_CMD='node'
