@@ -15,7 +15,11 @@ ln -s ~/ldf-config/<conf-file> ~/.<conf-file>
 ```
 
 ## Vim
-It is assumed that the Janus vim distribution is being used (see https://github.com/carlhuda/janus)
+It is assumed that the Janus vim distribution is being used (see https://github.com/carlhuda/janus) which can be done as follows:
+
+```
+curl -L https://bit.ly/janus-bootstrap | bash
+```
 
 In this situation, `~/.vimrc` is owned by Janus and any additional
 configuration is done in `~/.vimrc.before` and `~/.vimrc.after`.  So,
