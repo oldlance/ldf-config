@@ -213,10 +213,15 @@ bindsym $mod+Shift+e mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 
 bindsym $mod+Shift+x exec i3lock
 
+set $bluetooth_speaker "soundcore"
+bindsym $mod+b exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
+bindsym $mod+Shift+b exec --no-startup-id alacritty -e bluetoothctl disconnect
+
 exec_always feh --bg-scale /home/lance/Downloads/flyfishing_western_cape_witels_river-19.jpg
-exec spotify
+exec spotify-launcher
 exec firefox
 exec alacritty --class btop -T btop -e /usr/bin/btop
+exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
 
 # assign [class="firefox"] $ws2
 #For spotify the assign fails due to the window not being registered at the right time.
@@ -226,7 +231,6 @@ for_window [class = "Spotify"] move to workspace $ws10
 for_window [class = "firefox"] floating disable
 for_window [class = "firefox"] move to workspace $ws2 
 for_window [class = "btop"] move to workspace $ws4 
-for_window [class = "Slack" floating] move container to workspace current
 
 
 # Sound control
