@@ -97,10 +97,10 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Terminals"
+set $ws1 "1: Terminal"
 set $ws2 "2: Firefox"
 set $ws3 "3: IDE"
-set $ws4 "4"
+set $ws4 "4: Dash"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -216,6 +216,7 @@ bindsym $mod+Shift+x exec i3lock
 exec_always feh --bg-scale /home/lance/Downloads/flyfishing_western_cape_witels_river-19.jpg
 exec spotify
 exec firefox
+exec alacritty --class btop -T btop -e /usr/bin/btop
 
 # assign [class="firefox"] $ws2
 #For spotify the assign fails due to the window not being registered at the right time.
@@ -224,6 +225,7 @@ assign [class = "jetbrains-idea-ce"] $ws3
 for_window [class = "Spotify"] move to workspace $ws10
 for_window [class = "firefox"] floating disable
 for_window [class = "firefox"] move to workspace $ws2 
+for_window [class = "btop"] move to workspace $ws4 
 for_window [class = "Slack" floating] move container to workspace current
 
 
