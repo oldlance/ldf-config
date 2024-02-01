@@ -1,0 +1,6 @@
+*.core
+Music/
+Trash/
+.cache
+/usr/home/lance/go/pkg
+.mozilla

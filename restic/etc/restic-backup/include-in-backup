@@ -1,0 +1,8 @@
+/etc
+/usr/local/etc
+/boot/*.conf
+/usr/home
+/home
+/usr/local/var/backups
+/usr/local/scripts
+/var/cron/tabs
