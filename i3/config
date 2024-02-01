@@ -97,16 +97,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Terminal"
-set $ws2 "2: Firefox"
-set $ws3 "3: IDE"
-set $ws4 "4: Dash"
+set $ws1 "1:   Terminal"
+set $ws2 "2:   Firefox"
+set $ws3 "3: 🛠 IDE"
+set $ws4 "4: 🎚 Dash"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10: Music"
+set $ws10 "10:   Spotify"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -218,24 +218,32 @@ bindsym $mod+b exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $blu
 bindsym $mod+Shift+b exec --no-startup-id alacritty -e bluetoothctl disconnect
 
 exec_always feh --bg-scale /home/lance/Downloads/flyfishing_western_cape_witels_river-19.jpg
-exec spotify-launcher
-exec firefox
-exec alacritty --class btop -T btop -e /usr/bin/btop
+exec --no-startup-id spotify-launcher
+exec --no-startup-id firefox
+exec --no-startup-id code
+exec --no-startup-id alacritty --class btop -T btop -e /usr/bin/btop
 exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
+exec --no-startup-id alacritty
 
 # assign [class="firefox"] $ws2
 #For spotify the assign fails due to the window not being registered at the right time.
 #assign [class = "Spotify"] $ws10
+assign [class = "Alacritty"] $ws1
 assign [class = "jetbrains-idea-ce"] $ws3
+for_window [class = "Alacritty"] move to workspace $ws1
 for_window [class = "Spotify"] move to workspace $ws10
 for_window [class = "firefox"] floating disable
 for_window [class = "firefox"] move to workspace $ws2 
+for_window [class = "code"] move to workspace $ws3 
 for_window [class = "btop"] move to workspace $ws4 
 
 
 # Sound control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +7%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -7%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
