@@ -1,10 +1,12 @@
-## A restic-based  backup system on a french family PC
+## A restic-based backup system on a family PC
+
+The following is based on an installation on FreeBSD 14.  It is almost certain that the scripts will have to be tweaked to run on another distribution, as will the include and exclude files.  For now, treat restic configuration and script files as readonly on non-FreeBSD systems.  The README.md file should be maintained, though.
 
 ### Installation 
 1. As root, create the necessary subdirectories:
    ```bash
    sudo -s
-   mkdir -p /usr/local/etc/restic-backup /usr/local/etc/resticctl /usr/local/scripts /usr/local/var/backups
+   mkdir -p /usr/local/etc/restic-backup /usr/local/etc/resticctl /usr/local/scripts /usr/local/var/backups /var/log/restic
    ```
 2. Install `restic`
    ```bash
@@ -28,6 +30,22 @@
    # Run restic to backup data to GCS every day at 04:05am; also 2 minutes after rebooting.
    05 04 * * * /usr/local/scripts/restic-backup.sh >>/var/log/restic/backup.log
    @reboot     sleep 120 && /usr/local/scripts/restic-backup.sh >>/var/log/restic/backup.log
+   ```
+6. Set up log rotation:
+   ```bash
+   # FreeBSD: /usr/local/etc/newsyslog.conf.d/restic-backup-newsyslog.conf
+   /var/log/restic/backup.log   root:wheel  644    10  1024  *  -
+   
+   # ArchLinux: /etc/logrotate.d/restic-backup
+    /var/log/restic/backup.log {
+       create 0644 root wheel
+       rotate 10
+       size 1024k
+       notifempty
+       missingok
+       copytruncate
+    }
+
    ```
 
 ### Useful  info
@@ -57,3 +75,8 @@ Mount a repository as a drive (needs FUSE)
 ```bash
 sudo /usr/local/scripts/resticctl.sh mount /mnt/restic
 ```
+Snapshot diff (what was backed up):
+```bash
+sudo /usr/local/scripts/resticctl.sh snapshots
+sudo /usr/local/scripts/resticctl.sh diff <snapshot1> <snapshot2> 
+``` 
