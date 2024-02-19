@@ -1,0 +1,36 @@
+/*
+ * Base structure
+ */
+.toc,
+.content {
+    padding-top: 56px;
+}
+
+.content {
+    padding-left: 20px;
+    //border: 5px solid green;
+}
+
+.toc {
+    overflow: hidden;
+    margin-left: -10px;
+    //border: 5px solid red;
+
+}
+
+.toc ul {
+    padding-left: 12px;
+    list-style: none;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.toc ul li a {
+    display: block;
+    text-decoration: none;
+    color: #6c757d; // bg-secondary
+}
+
+.toc ul li a:hover {
+    background: #e9ecef ; // bs-grey-200
+}
