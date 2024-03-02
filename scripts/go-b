@@ -1,0 +1,36 @@
+# This script builds a go app ($1), say myapp.go,  and, using the linker, updates some variables in the AST.
+# See https://www.atatus.com/blog/golang-auto-build-versioning/ for an explanation
+
+# It exptects to find the following in myapp.go's  main package:
+#
+#    var buildStamp string
+#    var gitHas     string
+#
+# Running ./myapp --version will report the build timestamp and git commit hash.
+#
+
+set -euo pipefail
+
+if [ -z "$1" ] ; then
+  echo "Usage: $0 myapp.go"
+  exit 1
+fi
+
+if [ ! -d .git ] ; then
+  echo "This project is not under version control.  Use plain old 'go build' instead."
+  exit 1
+fi
+
+# See https://unix.stackexchange.com/questions/155046/determine-if-git-working-directory-is-clean-from-a-script/155077#155077
+if [ ! -z "$(git status --porcelain)" ] ; then
+  echo "Ensure that there are no uncommitted files before building (otherwise git hash is not meaningful)!"
+  exit 1
+fi
+
+
+stamp="$(date -u '+%Y-%m-%d_%I:%M:%S%p')"
+hash="$(git rev-parse HEAD)"
+
+echo "Building $1 with buildStamp=$stamp and gitHash=$hash ..."
+
+go build -ldflags "-X main.buildStamp=$stamp  -X main.gitHash=$hash" "$1"
