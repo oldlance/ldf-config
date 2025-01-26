@@ -21,13 +21,14 @@ db_user=postgres
 backups_dir=/usr/local/var/backups/postgres
 
 # Add databases to backup to this array
-dbs=(airflow movie_plots other_dbs)
+#dbs=(airflow movie_plots companies_house cwphase3)
+dbs=(airflow chatgpt_login companies_house cwphase3 forms_dev hello_dev live_view_studio_2ed_dev movie_plots template_tutorial uk_co_basic_dev)
 
 log "starting $script_name ..."
 
 log "back up config files to $backups_dir"
-cp /var/db/postgres/data15/conf.d/*.conf "$backups_dir"/
-cp /var/db/postgres/data15/*.conf "$backups_dir"/
+cp /var/db/postgres/data17/conf.d/*.conf "$backups_dir"/
+cp /var/db/postgres/data17/*.conf "$backups_dir"/
 
 log "backup up globals to $backups_dir/postgres-globals.sql"
 "$bin_dir"/pg_dumpall -U $db_user --globals-only -f "$backups_dir"/postgres-globals.sql
