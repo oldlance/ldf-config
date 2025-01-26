@@ -47,7 +47,11 @@ The following is based on an installation on FreeBSD 14.  It is almost certain t
        missingok
        copytruncate
     }
+    
+7. Initialise the repository.  **Remember to confirm that both `resticctl.conf` and `restit-backup.conf` have been changed to include the current value of `hostname -s` in the bucket path.**
 
+   ```bash
+   resticctl.sh init
    ```
 
 ### Useful  info
