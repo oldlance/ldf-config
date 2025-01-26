@@ -2,6 +2,8 @@
 
 The following is based on an installation on FreeBSD 14.  It is almost certain that the scripts will have to be tweaked to run on another distribution, as will the include and exclude files.  For now, treat restic configuration and script files as readonly on non-FreeBSD systems.  The README.md file should be maintained, though.
 
+ On non-FreeBSD systems, I've tended to use `/root/.config/restic/` as the equivalent of `/usr/local/etc` and `/usr/local/bin` as the equivalent of `/usr/local/scripts`. 
+
 ### Installation 
 1. As root, create the necessary subdirectories:
    ```bash
