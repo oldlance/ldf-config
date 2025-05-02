@@ -53,8 +53,9 @@ log "================ starting $script_name with config file $script_conf ..."
 
 # Export the latest list of installed packages, both bare and with origins.
 if [ -d "${LOCAL_BACKUPS_DIR:-}" ] ; then
-  /usr/sbin/pkg prime-list | sort > "$LOCAL_BACKUPS_DIR"/pkg-prime-list
-  /usr/sbin/pkg prime-origins | sort > "$LOCAL_BACKUPS_DIR"/pkg-prime-origins
+  (/usr/sbin/pkg prime-list | sort > "$LOCAL_BACKUPS_DIR"/pkg-prime-list) || log "ERROR generating prime list"
+  # prime-origins is an alias for "query -e '%a = 0' '%o' | sort -u".
+  (/usr/sbin/pkg prime-origins | sort > "$LOCAL_BACKUPS_DIR"/pkg-prime-origins) || log "ERROR generating prime origins"
 fi
 
 log "++++++++++++++++ backing up ..."
