@@ -101,6 +101,7 @@ set $ws1 "1:   Terminal"
 set $ws2 "2:   Firefox"
 set $ws3 "3: 🛠 IDE"
 set $ws4 "4: 🎚 Dash"
+#set $ws5 "5: 🎚 Portfolio"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -224,6 +225,7 @@ exec --no-startup-id code
 exec --no-startup-id alacritty --class btop -T btop -e /usr/bin/btop
 exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
 exec --no-startup-id alacritty
+#exec --no-startup-id alacritty --class "Portfolio Performance" -e /home/lance/bin/start-portfolio.sh
 
 # assign [class="firefox"] $ws2
 #For spotify the assign fails due to the window not being registered at the right time.
@@ -233,9 +235,11 @@ assign [class = "jetbrains-idea-ce"] $ws3
 for_window [class = "Alacritty"] move to workspace $ws1
 for_window [class = "Spotify"] move to workspace $ws10
 for_window [class = "firefox"] floating disable
-for_window [class = "firefox"] move to workspace $ws2 
-for_window [class = "code"] move to workspace $ws3 
-for_window [class = "btop"] move to workspace $ws4 
+for_window [class = "firefox"] move to workspace $ws2
+for_window [class = "code"] move to workspace $ws3
+for_window [class = "btop"] move to workspace $ws4
+#for_window [class = "Portfolio Monitor"] floating disable
+#for_window [class = "Portfolio Monitor"] move to workspace $ws5
 
 
 # Sound control
