@@ -33,7 +33,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -215,24 +215,26 @@ bindsym $mod+Shift+e mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 bindsym $mod+Shift+x exec i3lock
 
 set $bluetooth_speaker "soundcore"
-bindsym $mod+b exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
-bindsym $mod+Shift+b exec --no-startup-id alacritty -e bluetoothctl disconnect
+#bindsym $mod+b exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
+bindsym $mod+b exec --no-startup-id kitty /home/lance/bin/bt-connect $bluetooth_speaker
+bindsym $mod+Shift+b exec --no-startup-id kitty bluetoothctl disconnect
 
 exec_always feh --bg-scale /home/lance/Downloads/flyfishing_western_cape_witels_river-19.jpg
 exec --no-startup-id spotify-launcher
 exec --no-startup-id firefox
 exec --no-startup-id code
-exec --no-startup-id alacritty --class btop -T btop -e /usr/bin/btop
-exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
-exec --no-startup-id alacritty
-#exec --no-startup-id alacritty --class "Portfolio Performance" -e /home/lance/bin/start-portfolio.sh
+exec --no-startup-id kitty --class btop -T btop /usr/bin/btop
+exec --no-startup-id kitty /home/lance/bin/bt-connect $bluetooth_speaker
+exec --no-startup-id kitty
+#exec --no-startup-id kitty --class "Portfolio Performance" /home/lance/bin/start-portfolio.sh
 
 # assign [class="firefox"] $ws2
 #For spotify the assign fails due to the window not being registered at the right time.
 #assign [class = "Spotify"] $ws10
-assign [class = "Alacritty"] $ws1
+#assign [class = "Alacritty"] $ws1
+assign [class = "Kitty"] $ws1
 assign [class = "jetbrains-idea-ce"] $ws3
-for_window [class = "Alacritty"] move to workspace $ws1
+for_window [class = "Kitty"] move to workspace $ws1
 for_window [class = "Spotify"] move to workspace $ws10
 for_window [class = "firefox"] floating disable
 for_window [class = "firefox"] move to workspace $ws2
