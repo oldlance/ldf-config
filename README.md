@@ -78,7 +78,6 @@ ln -s ~/ldf-config/vim/vimrc.after ~/.vimrc.after
 ## SQLFluff
 
 ```bash
-mkdir -p ~/.config/sqlfluff
-ln -s ~/ldf-config/sqlfluff/sqlfluff ~/.config/sqlfluff/.sqlfluff
+ln -s ~/ldf-config/sqlfluff/sqlfluff ~/.sqlfluff
 ```
 
