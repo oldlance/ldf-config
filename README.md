@@ -15,6 +15,7 @@ git clone git@github.com:oldlance/ldf-config.git
 
 ```
 ln -s ~/ldf-config/<conf-file> ~/.<conf-file>
+ln -s ~/ldf-config/appname/<conf-file> ~/.config/<appname>/.<conf-file>
 ```
 
 ## Vim
@@ -74,5 +75,10 @@ In this situation, `~/.vimrc` is owned by Janus and any additional configuration
 ln -s ~/ldf-config/vim/vimrc.after ~/.vimrc.after
 ```
 
+## SQLFluff
 
+```bash
+mkdir -p ~/.config/sqlfluff
+ln -s ~/ldf-config/sqlfluff/sqlfluff ~/.config/sqlfluff/.sqlfluff
+```
 
