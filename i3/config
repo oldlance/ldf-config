@@ -101,8 +101,8 @@ set $ws1 "1:   Terminal"
 set $ws2 "2:   Firefox"
 set $ws3 "3: 🛠 IDE"
 set $ws4 "4: 🎚 Dash"
-#set $ws5 "5: 🎚 Portfolio"
-set $ws5 "5"
+set $ws5 "5: 🎚 Remmina"
+#set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -223,6 +223,7 @@ exec_always feh --bg-scale /home/lance/Pictures/flyfishing_western_cape_witels_r
 exec --no-startup-id spotify-launcher
 exec --no-startup-id firefox
 exec --no-startup-id code
+exec --no-startup-id /usr/sbin/remmina
 exec --no-startup-id kitty --class btop -T btop /usr/bin/btop
 exec --no-startup-id kitty /home/lance/bin/bt-connect $bluetooth_speaker
 exec --no-startup-id kitty
@@ -240,6 +241,7 @@ for_window [class = "firefox"] floating disable
 for_window [class = "firefox"] move to workspace $ws2
 for_window [class = "code"] move to workspace $ws3
 for_window [class = "btop"] move to workspace $ws4
+for_window [class = "org.remmina.Remmina"] move to workspace $ws5
 #for_window [class = "Portfolio Monitor"] floating disable
 #for_window [class = "Portfolio Monitor"] move to workspace $ws5
 
