@@ -212,14 +212,14 @@ mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
 
 bindsym $mod+Shift+e mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 
-bindsym $mod+Shift+x exec i3lock
+bindsym $mod+Shift+x exec i3lock -i /home/lance/Pictures/Kinsale_Sunset_From_Dock_Bar.png
 
 set $bluetooth_speaker "soundcore"
 #bindsym $mod+b exec --no-startup-id alacritty -e /home/lance/bin/bt-connect $bluetooth_speaker
 bindsym $mod+b exec --no-startup-id kitty /home/lance/bin/bt-connect $bluetooth_speaker
 bindsym $mod+Shift+b exec --no-startup-id kitty bluetoothctl disconnect
 
-exec_always feh --bg-scale /home/lance/Downloads/flyfishing_western_cape_witels_river-19.jpg
+exec_always feh --bg-scale /home/lance/Pictures/flyfishing_western_cape_witels_river-19.jpg
 exec --no-startup-id spotify-launcher
 exec --no-startup-id firefox
 exec --no-startup-id code
